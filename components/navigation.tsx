@@ -3,8 +3,16 @@
 import { useState } from "react"
 import { Menu, X, Search } from "lucide-react"
 import { CustomButton } from "./ui/custom-button"
+import Link from "next/link"
 
-const navigationItems = ["PRODUKTE", "EINSATZBEREICHE", "REFERENZEN", "UNTERNEHMEN", "BLOG", "KONTAKT"]
+const navigationItems = [
+  { name: "PRODUKTE", href: "#produkte" },
+  { name: "EINSATZBEREICHE", href: "#einsatzbereiche" },
+  { name: "REFERENZEN", href: "#referenzen" },
+  { name: "UNTERNEHMEN", href: "#unternehmen" },
+  { name: "BLOG", href: "#blog" },
+  { name: "KONTAKT", href: "#kontakt" },
+]
 
 export function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -23,9 +31,13 @@ export function Navigation() {
         {/* Desktop Navigation */}
         <div className="hidden lg:flex items-center space-x-8">
           {navigationItems.map((item) => (
-            <a key={item} href="#" className="text-gray-700 hover:text-[#0EA5E9] font-medium text-sm transition-colors">
-              {item}
-            </a>
+            <Link
+              key={item.name}
+              href={item.href}
+              className="text-gray-700 hover:text-[#0EA5E9] font-medium text-sm transition-colors"
+            >
+              {item.name}
+            </Link>
           ))}
           <button className="text-gray-700 hover:text-[#0EA5E9] transition-colors">
             <Search size={20} />
@@ -45,14 +57,14 @@ export function Navigation() {
         <div className="lg:hidden absolute top-full left-0 w-full bg-white/95 backdrop-blur-sm shadow-lg border-t">
           <div className="flex flex-col space-y-4 p-4">
             {navigationItems.map((item) => (
-              <a
-                key={item}
-                href="#"
+              <Link
+                key={item.name}
+                href={item.href}
                 className="text-gray-700 hover:text-[#0EA5E9] font-medium py-2 transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
-                {item}
-              </a>
+                {item.name}
+              </Link>
             ))}
             <button className="flex items-center text-gray-700 hover:text-[#0EA5E9] py-2 transition-colors">
               <Search size={20} className="mr-2" />

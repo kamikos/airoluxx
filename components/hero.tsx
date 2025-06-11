@@ -1,5 +1,5 @@
-import { CustomButton } from "./ui/custom-button"
-import { Phone, Mail, MapPin } from "lucide-react"
+import { CustomButton } from "./ui/custom-button";
+import { Phone, Mail, MapPin } from "lucide-react";
 
 export function Hero() {
   return (
@@ -21,9 +21,16 @@ export function Hero() {
             WOHNRAUMLÜFTUNGEN
           </h1>
 
-          <p className="text-white text-lg lg:text-xl mb-8 opacity-90">Für höchste architektonische Ansprüche</p>
+          <p className="text-white text-lg lg:text-xl mb-8 opacity-90">
+            Für höchste architektonische Ansprüche
+          </p>
 
-          <CustomButton variant="primary" size="lg" className="text-white font-semibold px-8 py-4 text-base lg:text-lg">
+          <CustomButton
+            variant="primary"
+            size="lg"
+            showArrow
+            className="text-white font-semibold text-base lg:text-lg"
+          >
             JETZT BERATEN LASSEN!
           </CustomButton>
         </div>
@@ -53,5 +60,5 @@ export function Hero() {
         </div>
       </div>
     </section>
-  )
+  );
 }
