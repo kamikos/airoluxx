@@ -2,7 +2,7 @@ export function MadeInGermanySection() {
     return (
       <section id="qualitaet" className="w-full bg-[#0e92cf] text-white relative overflow-hidden">
         <h2 className="text-3xl lg:text-4xl font-light w-full text-center py-8">Qualität „Made in Germany"</h2>
-        <div className="max-w-6xl mx-auto px-4 lg:px-8 text-center relative z-10" style={{
+        <div className="mx-auto px-4 lg:px-8 text-center relative z-10" style={{
                 backgroundImage: `url("/images/Motiv.png")`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',

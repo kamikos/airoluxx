@@ -1,5 +1,6 @@
 import Image from "next/image"
-import { ArrowRight } from "lucide-react"
+import Link from "next/link"
+import { CustomButton } from "./ui/custom-button"
 
 const solutionCards = [
   {
@@ -44,7 +45,7 @@ export function SolutionsSection() {
 
         <div className="grid md:grid-cols-3 gap-6">
           {solutionCards.map((card, index) => (
-            <div key={index} className="bg-white shadow-md overflow-hidden">
+            <div key={index} className="bg-white shadow-md overflow-hidden flex flex-col">
               <div className="px-6 py-4 min-h-[100px] flex items-start">
                 <h3 className="text-2xl font-medium text-[#0EA5E9] mb-4">{card.title}</h3>
               </div>
@@ -59,25 +60,22 @@ export function SolutionsSection() {
                 />
               </div>
 
-              <div className="p-6 space-y-4">
-                {card.paragraphs.map((paragraph, pIndex) => (
-                  <p key={pIndex} className="text-gray-700 text-sm leading-relaxed">
-                    {paragraph}
-                  </p>
-                ))}
+              <div className="p-6 space-y-4 flex flex-col flex-grow">
+                <div className="flex-grow">
+                  {card.paragraphs.map((paragraph, pIndex) => (
+                    <p key={pIndex} className="text-gray-700 text-sm leading-relaxed">
+                      {paragraph}
+                    </p>
+                  ))}
 
-                {card.moreText && <p className="text-gray-500 text-sm italic">{card.moreText}</p>}
-
-                <div className="pt-4">
-                  <a
-                    href={card.href}
-                    className="inline-flex items-center bg-gray-400 hover:bg-gray-500 transition-colors text-white text-sm font-medium"
-                  >
-                    <span className="px-4 py-2">{card.linkText}</span>
-                    <span className="bg-gray-500 h-full flex items-center justify-center px-3 py-2">
-                      <ArrowRight size={16} />
-                    </span>
-                  </a>
+                  {card.moreText && <p className="text-gray-500 text-sm italic">{card.moreText}</p>}
+                </div>
+                <div className="pt-4 flex justify-end mt-auto">
+                  <Link href={card.href}>
+                    <CustomButton variant="outline" size="lg" showArrow className="bg-gray-400 text-white border-gray-400 hover:bg-gray-500 hover:border-gray-500">
+                      {card.linkText}
+                    </CustomButton>
+                  </Link>
                 </div>
               </div>
             </div>

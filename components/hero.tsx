@@ -13,9 +13,9 @@ export function Hero() {
       />
 
       {/* Content */}
-      <div className="relative z-10 w-full px-4 lg:px-8">
+      <div className="relative z-10 w-full px-4 lg:px-8 container mx-auto">
         <div className="max-w-2xl">
-          <h1 className="text-white text-4xl lg:text-6xl font-bold leading-tight mb-6">
+          <h1 className="text-white text-3xl md:text-4xl lg:text-6xl font-bold leading-tight mb-6">
             DEZENTRALE
             <br />
             WOHNRAUMLÜFTUNGEN

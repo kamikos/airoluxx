@@ -38,7 +38,7 @@ const productCategories = [
 
 export function ProductsSection() {
   return (
-    <section id="produkte" className="py-16 lg:py-0">
+    <section id="produkte" className="">
       {/* Header */}
       <div className="w-full bg-[#8BC34A] text-white text-center py-4">
         <h2 className="text-xl lg:text-2xl font-medium">
@@ -66,7 +66,7 @@ export function ProductsSection() {
                       {category.variants.map((variant, vIndex) => (
                         <button
                           key={vIndex}
-                          className="bg-gray-400 text-white px-4 py-2 text-sm hover:bg-gray-500 transition-colors"
+                          className="bg-gray-400 text-white px-4 py-2 text-sm hover:bg-white hover:text-blue-400 transition-colors"
                         >
                           {variant}
                         </button>
@@ -93,7 +93,7 @@ export function ProductsSection() {
                       >
                         <spec.icon size={24} className="mx-auto mb-2" />
                         <div className="text-sm font-semibold">{spec.text}</div>
-                        <div className="text-xs">{spec.subtext}</div>
+                        <div className="text-xs break-words">{spec.subtext}</div>
                       </div>
                     ))}
                   </div>
@@ -131,7 +131,7 @@ export function ProductsSection() {
         <div className="w-full bg-gray-200">
           <div className="max-w-6xl mx-auto px-4 lg:px-8 py-12">
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-              <div>
+              <div className=" relative">
                 {/* Specs */}
                 <div className="grid grid-cols-3 gap-4 mb-6">
                   <div className="bg-gray-400 text-white p-3 text-center">
@@ -151,7 +151,7 @@ export function ProductsSection() {
                   </div>
                 </div>
 
-                <div className="space-y-4 mb-6">
+                <div className="space-y-4 lg:pb-6 pb-12 bg-white px-8 py-4 shadow-md">
                   <p className="text-gray-700 text-sm leading-relaxed">
                     Die hochschallgedämmten airoluxx AirFlat ZWD
                     Nachströmelemente sind sowohl für den Einsatz in der
@@ -171,9 +171,11 @@ export function ProductsSection() {
                   </p>
                 </div>
 
-                <CustomButton variant="primary" size="lg" showArrow>
-                  MEHR ERFAHREN
-                </CustomButton>
+                <div className="absolute -bottom-4 right-4">
+                  <CustomButton variant="primary" size="lg" showArrow>
+                    MEHR ERFAHREN
+                  </CustomButton>
+                </div>
               </div>
 
               <div>

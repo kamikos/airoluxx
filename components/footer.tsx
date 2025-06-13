@@ -26,8 +26,8 @@ export function Footer() {
         className="bg-[#0EA5E9] text-white py-12 lg:py-16 relative"
         style={{
           backgroundImage: `url('/images/raster.png')`,
-          backgroundRepeat: "repeat",
-          backgroundSize: "auto",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
         }}
       >
         <div className="max-w-6xl mx-auto px-4 lg:px-8">
@@ -38,10 +38,10 @@ export function Footer() {
                 airoluxx
               </div>
             </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 md:gap-8 justify-between">
 
             {/* Company Info */}
-            <div className="lg:col-span-2">
+            <div className="lg:col-span-2 flex justify-between">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                 <div>
                   <h3 className="text-sm font-semibold mb-3 tracking-wider">FIRMA</h3>
@@ -75,11 +75,12 @@ export function Footer() {
                 </div>
               </div>
             </div>
+            
 
             {/* Quick Links */}
-            <div className="text-right">
+            <div className="text-left ml-auto">
               <h3 className="text-sm font-semibold mb-6 tracking-wider">QUICKLINKS</h3>
-              <ul className="space-y-3">
+              <ul className="">
                 {footerLinks.quicklinks.map((link) => (
                   <li key={link.name}>
                     <Link href={link.href} className="text-sm hover:underline transition-colors">
@@ -91,9 +92,9 @@ export function Footer() {
             </div>
 
             {/* Service */}
-            <div className="text-right">
+            <div className="text-left ml-auto">
               <h3 className="text-sm font-semibold mb-6 tracking-wider">SERVICE</h3>
-              <ul className="space-y-3">
+              <ul className="">
                 {footerLinks.service.map((link) => (
                   <li key={link.name}>
                     <Link href={link.href} className="text-sm hover:underline transition-colors">
