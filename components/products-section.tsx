@@ -1,5 +1,6 @@
 import { CustomButton } from "./ui/custom-button";
 import { Volume2, Wind, Ruler, Plus } from "lucide-react";
+import Image from "next/image";
 
 const productCategories = [
   {
@@ -54,9 +55,11 @@ export function ProductsSection() {
               <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
                 {/* Product Image */}
                 <div className="order-2 lg:order-1">
-                  <img
+                  <Image
                     src={category.image || "/placeholder.svg"}
                     alt={category.title}
+                    width={500}
+                    height={300}
                     className="w-full max-w-md mx-auto"
                   />
 
@@ -179,9 +182,11 @@ export function ProductsSection() {
               </div>
 
               <div>
-                <img
+                <Image
                   src="/images/3.png"
                   alt="AirFlat ZWD"
+                  width={500}
+                  height={300}
                   className="w-full max-w-md mx-auto"
                 />
               </div>

@@ -1,7 +1,7 @@
 export function MadeInGermanySection() {
     return (
       <section id="qualitaet" className="w-full bg-[#0e92cf] text-white relative overflow-hidden">
-        <h2 className="text-3xl lg:text-4xl font-light w-full text-center py-8">Qualität „Made in Germany"</h2>
+        <h2 className="text-3xl lg:text-4xl font-light w-full text-center py-8">Qualität &quot;Made in Germany&quot;</h2>
         <div className="mx-auto px-4 lg:px-8 text-center relative z-10" style={{
                 backgroundImage: `url("/images/Motiv.png")`,
                 backgroundSize: 'cover',
@@ -18,7 +18,7 @@ export function MadeInGermanySection() {
             </p>
 
             <p className="text-lg lg:text-xl leading-relaxed font-light relative z-10">
-              Damit erfüllen wir unsere eigenen hohen Ansprüche an die Qualität unserer Produkte „Made in Germany". Des
+              Damit erfüllen wir unsere eigenen hohen Ansprüche an die Qualität unserer Produkte &quot;Made in Germany&quot;. Des
               weiteren ist uns Nachhaltigkeit und eine umweltschonende Fertigung am Produktionsstandort Landshut besonders
               wichtig.
             </p>
