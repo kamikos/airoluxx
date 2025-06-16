@@ -19,13 +19,13 @@ export function CustomButton({
   ...props
 }: CustomButtonProps) {
   const baseStyles =
-    "inline-flex items-center justify-center font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
+    "inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover-scale click-response"
 
   const variants = {
-    primary: "bg-[#8BC34A] text-white hover:bg-[#7CB342] focus-visible:ring-[#8BC34A]",
-    secondary: "bg-[#0EA5E9] text-white hover:bg-[#0284C7] focus-visible:ring-[#0EA5E9]",
-    outline: "border border-gray-300 bg-transparent hover:bg-gray-50 text-gray-700",
-    ghost: "hover:bg-gray-100 text-gray-700",
+    primary: "bg-[#8BC34A] text-white hover:bg-[#7CB342] focus-visible:ring-[#8BC34A] hover-glow",
+    secondary: "bg-[#0EA5E9] text-white hover:bg-[#0284C7] focus-visible:ring-[#0EA5E9] hover-glow",
+    outline: "border border-gray-300 bg-transparent hover:bg-gray-50 text-gray-700 hover-lift",
+    ghost: "hover:bg-gray-100 text-gray-700 hover-lift",
   }
 
   const sizes = {

@@ -120,3 +120,62 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer utilities {
+  .hover-scale {
+    @apply transition-transform duration-200 hover:scale-[1.02];
+  }
+  
+  .hover-lift {
+    @apply transition-all duration-200 hover:-translate-y-[2px] hover:shadow-md;
+  }
+  
+  .smooth-transition {
+    @apply transition-all duration-200 ease-in-out;
+  }
+
+  .hover-glow {
+    @apply transition-all duration-300;
+    &:hover {
+      @apply shadow-[0_0_15px_rgba(139,195,74,0.3)];
+    }
+  }
+
+  .hover-bright {
+    @apply transition-all duration-200;
+    &:hover {
+      @apply brightness-110;
+    }
+  }
+
+  .click-response {
+    @apply transition-transform duration-100 active:scale-[0.97];
+  }
+
+  .float-animation {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
