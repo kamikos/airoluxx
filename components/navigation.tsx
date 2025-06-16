@@ -1,333 +1,262 @@
 "use client"
 
 import { useState } from "react"
-import { Menu, X, Search, ChevronDown, ChevronRight } from "lucide-react"
-import { CustomButton } from "./ui/custom-button"
 import Link from "next/link"
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-} from "@/components/ui/navigation-menu"
-import { cn } from "@/lib/utils"
+import { Menu, X, Search } from "lucide-react"
+import Image from "next/image"
 
-const produkteItems = [
+// Example submenu items for Produkte
+const produkteSubmenu = [
   {
-    title: "Schalldämmluftter",
-    href: "#schalldaemmluftter",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.",
+    title: "Lorem Ipsum",
+    icon: "/images/1.png",
+    href: "#schalldaemmluefter",
+    desc: "Lorem Ipsum",
   },
   {
-    title: "Wärmerückgewinnungsgeräte",
+    title: "Lorem Ipsum",
+    icon: "/images/2.png",
     href: "#waermerueckgewinnung",
-    description: "Ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.",
+    desc: "Lorem Ipsum",
   },
   {
-    title: "Nachströmelemente",
-    href: "#nachstroemelemente",
-    description: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.",
+    title: "Lorem Ipsum",
+    icon: "/images/3.png",
+    href: "#ohne-waermerueckgewinnung",
+    desc: "Lorem Ipsum",
   },
   {
-    title: "Zubehör",
+    title: "Lorem Ipsum",
+    icon: "/images/4.png",
     href: "#zubehoer",
-    description: "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt.",
+    desc: "Lorem Ipsum",
   },
 ]
 
-const einsatzbereicheItems = [
+// Example submenu items for Einsatzbereiche
+const einsatzbereicheSubmenu = [
   {
-    title: "Wohnungsbau",
-    href: "#wohnungsbau",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor.",
+    title: "Lorem Ipsum",
+    icon: "/images/building1.png",
+    href: "#geschosswohnungsbau",
+    desc: "Lorem Ipsum",
   },
   {
-    title: "Gewerbebau",
+    title: "Lorem Ipsum",
+    icon: "/images/building2.png",
+    href: "#hotel",
+    desc: "Lorem Ipsum",
+  },
+  {
+    title: "Lorem Ipsum",
+    icon: "/images/building3.png",
+    href: "#kiga-schulen",
+    desc: "Lorem Ipsum",
+  },
+  {
+    title: "Lorem Ipsum",
+    icon: "/images/building4.png",
     href: "#gewerbebau",
-    description: "Ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.",
+    desc: "Lorem Ipsum",
   },
   {
-    title: "Hotellerie",
-    href: "#hotellerie",
-    description: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.",
-  },
-  {
-    title: "Sanierung",
-    href: "#sanierung",
-    description: "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.",
+    title: "Lorem Ipsum",
+    icon: "/images/building5.png",
+    href: "#einfamilienhaeuser",
+    desc: "Lorem Ipsum",
   },
 ]
 
-const hamburgerMenuItems = [
-  {
-    category: "lorem",
-    items: [
-      { name: "lorem2" , href: "#lorem2" },
-      { name: "Lorem", href: "#lorem" },
-    ],
-  },
-  {
-    category: "safafsafs",
-    items: [
-      { name: "asfafsafs", href: "#afsafsafs" },
-    ],
-  },
+const navLinks = [
+  { name: "PRODUKTE", href: "#produkte", submenu: produkteSubmenu },
+  { name: "EINSATZBEREICHE", href: "#einsatzbereiche", submenu: einsatzbereicheSubmenu },
+  { name: "REFERENZEN", href: "#referenzen" },
+  { name: "BLOG", href: "#blog" },
+  { name: "KONTAKT", href: "#kontakt" },
+  { name: "FILTERSHOP", href: "#filtershop" },
 ]
 
 export function Navigation() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [expandedMobileSection, setExpandedMobileSection] = useState<string | null>(null)
+  const [mobileOpen, setMobileOpen] = useState(false)
+  const [submenuOpen, setSubmenuOpen] = useState<string | null>(null)
 
-  const toggleMobileSection = (section: string) => {
-    setExpandedMobileSection(expandedMobileSection === section ? null : section)
-  }
+  // Helper to get submenu data
+  const currentSubmenu = navLinks.find(l => l.name === submenuOpen)?.submenu;
+
+  // Handler to close submenu on mouse leave
+  const handleNavBarMouseLeave = () => {
+    setSubmenuOpen(null);
+  };
+
+  // Animation for mobile menu
+  // (You can later add framer-motion or CSS transitions for smoother effect)
 
   return (
-    <nav className="w-full bg-white/90 backdrop-blur-sm shadow-sm absolute top-0 left-0 right-0 z-50">
-      <div className="flex items-center justify-between px-4 lg:px-8 py-4">
+    <nav className="w-full z-50">
+      {/* Top Bar */}
+      <div
+        className="flex items-center justify-between px-4 lg:px-12 py-4 bg-white shadow-sm relative"
+        onMouseLeave={handleNavBarMouseLeave}
+      >
         {/* Logo */}
         <div className="flex items-center">
-          <div className="text-[#0EA5E9] font-bold text-xl lg:text-2xl">
-            <span className="mr-1">::::</span>
-            airoluxx
-          </div>
+          <span className="font-bold text-2xl text-[#0EA5E9] tracking-widest">
+            <span className="mr-1">::::</span>airoluxx
+          </span>
         </div>
-
-        {/* Desktop Navigation */}
-        <div className="hidden lg:flex items-center space-x-4">
-          <NavigationMenu>
-            <NavigationMenuList>
-              <NavigationMenuItem className="">
-                <NavigationMenuTrigger className="text-gray-700 hover:text-[#0EA5E9] font-medium text-sm rounded-none bg-transparent">
-                  PRODUKTE
-                </NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                    {produkteItems.map((item) => (
-                      <ListItem key={item.title} title={item.title} href={item.href}>
-                        {item.description}
-                      </ListItem>
-                    ))}
-                  </ul>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <NavigationMenuTrigger className="text-gray-700 hover:text-[#0EA5E9] font-medium text-sm rounded-none bg-transparent">
-                  EINSATZBEREICHE
-                </NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                    {einsatzbereicheItems.map((item) => (
-                      <ListItem key={item.title} title={item.title} href={item.href}>
-                        {item.description}
-                      </ListItem>
-                    ))}
-                  </ul>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <Link
-                  href="#referenzen"
-                  className="text-gray-700 hover:text-[#0EA5E9] font-medium text-sm px-4 py-2 transition-colors"
-                >
-                  REFERENZEN
-                </Link>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <Link
-                  href="#unternehmen"
-                  className="text-gray-700 hover:text-[#0EA5E9] font-medium text-sm px-4 py-2 transition-colors"
-                >
-                  UNTERNEHMEN
-                </Link>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <Link
-                  href="#blog"
-                  className="text-gray-700 hover:text-[#0EA5E9] font-medium text-sm px-4 py-2 transition-colors"
-                >
-                  BLOG
-                </Link>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <Link
-                  href="#kontakt"
-                  className="text-gray-700 hover:text-[#0EA5E9] font-medium text-sm px-4 py-2 transition-colors"
-                >
-                  KONTAKT
-                </Link>
-              </NavigationMenuItem>
-            </NavigationMenuList>
-          </NavigationMenu>
-
-          <button className="text-gray-700 hover:text-[#0EA5E9] transition-colors ml-4">
+        {/* Desktop Nav */}
+        <div className="hidden lg:flex items-center space-x-2 xl:space-x-6">
+          {navLinks.map((link) => (
+            <div
+              key={link.name}
+              className="relative group"
+              onMouseEnter={() => link.submenu && setSubmenuOpen(link.name)}
+            >
+              <Link
+                href={link.href}
+                className={`uppercase text-sm font-semibold px-3 py-2 tracking-wide transition-colors ${submenuOpen === link.name ? 'text-[#0EA5E9]' : 'text-gray-700 hover:text-[#0EA5E9]'}`}
+              >
+                {link.name}
+              </Link>
+            </div>
+          ))}
+          <button className="ml-4 text-gray-700 hover:text-[#0EA5E9]">
             <Search size={20} />
           </button>
         </div>
-
-        {/* Hamburger Menu Button - Always Visible */}
-        <div className="flex items-center space-x-4">
-          {/* Search button for mobile */}
-          <button className="lg:hidden text-gray-700 hover:text-[#0EA5E9] transition-colors">
-            <Search size={20} />
+        {/* Burger always visible */}
+        <div className="flex items-center space-x-2">
+          <button className="text-gray-700 hover:text-[#0EA5E9]">
+            <Search size={22} />
           </button>
-
-          <CustomButton variant="secondary" size="md" onClick={() => setIsMenuOpen(!isMenuOpen)} className="p-2">
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </CustomButton>
+          <button
+            className="ml-2 p-2 rounded hover:bg-[#0EA5E9]/10 transition"
+            onClick={() => setMobileOpen(true)}
+            aria-label="Open menu"
+          >
+            <Menu size={28} className="text-[#0EA5E9]" />
+          </button>
         </div>
       </div>
 
-      {/* Hamburger Menu Dropdown */}
-      {isMenuOpen && (
-        <div className="absolute top-full left-0 w-full bg-white/95 backdrop-blur-sm shadow-lg border-t">
-          <div className="max-w-6xl mx-auto px-4 py-6">
-            <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
-              {hamburgerMenuItems.map((category, index) => (
-                <div key={index}>
-                  <h3 className="text-[#0EA5E9] font-semibold text-lg mb-4">{category.category}</h3>
-                  <ul className="space-y-2">
-                    {category.items.map((item, itemIndex) => (
-                      <li key={itemIndex}>
-                        <Link
-                          href={item.href}
-                          className="text-gray-700 hover:text-[#0EA5E9] transition-colors block py-1"
-                          onClick={() => setIsMenuOpen(false)}
-                        >
-                          {item.name}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-
-            {/* Mobile Navigation Links with Dropdowns */}
-            <div className="lg:hidden mt-8 pt-6 border-t border-gray-200">
-              <h3 className="text-[#0EA5E9] font-semibold text-lg mb-4">Hauptnavigation</h3>
-              <div className="space-y-2">
-                {/* PRODUKTE with dropdown */}
-                <div>
-                  <button
-                    onClick={() => toggleMobileSection("produkte")}
-                    className="flex items-center justify-between w-full text-gray-700 hover:text-[#0EA5E9] font-medium py-2 transition-colors"
-                  >
-                    PRODUKTE
-                    {expandedMobileSection === "produkte" ? <ChevronDown size={16} /> : <ChevronRight size={16} />}
-                  </button>
-                  {expandedMobileSection === "produkte" && (
-                    <div className="ml-4 mt-2 space-y-2 border-l-2 border-gray-200 pl-4">
-                      {produkteItems.map((item) => (
-                        <div key={item.title} className="py-2">
-                          <Link
-                            href={item.href}
-                            className="text-[#0EA5E9] font-medium hover:text-[#0284C7] transition-colors block"
-                            onClick={() => setIsMenuOpen(false)}
-                          >
-                            {item.title}
-                          </Link>
-                          <p className="text-sm text-gray-600 mt-1">{item.description}</p>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-
-                {/* EINSATZBEREICHE with dropdown */}
-                <div>
-                  <button
-                    onClick={() => toggleMobileSection("einsatzbereiche")}
-                    className="flex items-center justify-between w-full text-gray-700 hover:text-[#0EA5E9] font-medium py-2 transition-colors"
-                  >
-                    EINSATZBEREICHE
-                    {expandedMobileSection === "einsatzbereiche" ? (
-                      <ChevronDown size={16} />
-                    ) : (
-                      <ChevronRight size={16} />
-                    )}
-                  </button>
-                  {expandedMobileSection === "einsatzbereiche" && (
-                    <div className="ml-4 mt-2 space-y-2 border-l-2 border-gray-200 pl-4">
-                      {einsatzbereicheItems.map((item) => (
-                        <div key={item.title} className="py-2">
-                          <Link
-                            href={item.href}
-                            className="text-[#0EA5E9] font-medium hover:text-[#0284C7] transition-colors block"
-                            onClick={() => setIsMenuOpen(false)}
-                          >
-                            {item.title}
-                          </Link>
-                          <p className="text-sm text-gray-600 mt-1">{item.description}</p>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-
-                {/* Other navigation items */}
-                <Link
-                  href="#referenzen"
-                  className="text-gray-700 hover:text-[#0EA5E9] font-medium py-2 transition-colors block"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  REFERENZEN
-                </Link>
-                <Link
-                  href="#unternehmen"
-                  className="text-gray-700 hover:text-[#0EA5E9] font-medium py-2 transition-colors block"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  UNTERNEHMEN
-                </Link>
-                <Link
-                  href="#blog"
-                  className="text-gray-700 hover:text-[#0EA5E9] font-medium py-2 transition-colors block"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  BLOG
-                </Link>
-                <Link
-                  href="#kontakt"
-                  className="text-gray-700 hover:text-[#0EA5E9] font-medium py-2 transition-colors block"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  KONTAKT
-                </Link>
+      {/* Submenu (Desktop, full width, below nav) */}
+      {currentSubmenu && (
+        <div
+          className="w-screen bg-gray-100 border-t-4 border-[#0EA5E9] shadow-lg flex px-8 py-20 z-40 animate-fadeIn fixed left-0 top-[72px]"
+          onMouseLeave={handleNavBarMouseLeave}
+          onMouseEnter={() => {}}
+        >
+          {currentSubmenu.map((item) => (
+            <Link
+              key={item.title}
+              href={item.href}
+              className="flex flex-col items-center flex-1 px-4 group/subitem hover:bg-white transition-colors rounded-lg"
+            >
+              <div className="w-16 h-16 mb-2 flex items-center justify-center">
+                <Image src={item.icon} alt={item.title} width={64} height={64} className="object-contain" />
               </div>
+              <span className="text-xs text-gray-700 text-center font-medium mb-1">Lorem Ipsum</span>
+            </Link>
+          ))}
+        </div>
+      )}
+
+      {/* Mobile Fullscreen Menu */}
+      {mobileOpen && (
+        <div className="fixed inset-0 bg-[#0EA5E9] bg-opacity-95 z-50 flex flex-col animate-slideDown">
+          <div className="flex items-center justify-between px-6 py-6">
+            <span className="font-bold text-2xl text-white tracking-widest">
+              <span className="mr-1">::::</span>airoluxx
+            </span>
+            <button
+              className="p-2 rounded hover:bg-white/10 transition"
+              onClick={() => setMobileOpen(false)}
+              aria-label="Close menu"
+            >
+              <X size={32} className="text-white" />
+            </button>
+          </div>
+          {/* Search Bar */}
+          <div className="px-6 mb-8">
+            <div className="flex items-center bg-white/10 rounded-lg px-4 py-2">
+              <Search size={20} className="text-white mr-2" />
+              <input
+                type="text"
+                placeholder="Suche"
+                className="bg-transparent outline-none border-none text-white placeholder-white w-full text-base"
+              />
+            </div>
+          </div>
+          {/* Menu Groups */}
+          <div className="flex-1 flex flex-col justify-center items-center space-y-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-3xl">
+              {/* Produkte group with submenu */}
+              <div>
+                <div className="uppercase text-white font-bold mb-4 tracking-wider">Produkte</div>
+                <ul className="space-y-2">
+                  {produkteSubmenu.map((item) => (
+                    <li key={item.title}>
+                      <Link
+                        href={item.href}
+                        className="flex items-center text-white hover:text-[#8BC34A] text-lg font-medium px-2 py-2 rounded transition-colors"
+                        onClick={() => setMobileOpen(false)}
+                      >
+                        <Image src={item.icon} alt={item.title} width={32} height={32} className="mr-3" />
+                        {item.desc}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              {/* Other links */}
+              <div>
+                <div className="uppercase text-white font-bold mb-4 tracking-wider">Navigation</div>
+                <ul className="space-y-2">
+                  {navLinks.slice(1).map((link) => (
+                    <li key={link.name}>
+                      <Link
+                        href={link.href}
+                        className="text-white hover:text-[#8BC34A] text-lg font-medium px-2 py-2 rounded transition-colors"
+                        onClick={() => setMobileOpen(false)}
+                      >
+                        {link.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+          {/* Footer (language, etc.) */}
+          <div className="flex justify-between items-center px-6 py-4 text-white text-xs opacity-80 border-t border-white/20 mt-auto">
+            <div>
+              <Link href="#datenschutz" className="hover:underline mr-4">DATENSCHUTZ</Link>
+              <Link href="#impressum" className="hover:underline">IMPRESSUM</Link>
+            </div>
+            <div>
+              DE / ENG
             </div>
           </div>
         </div>
       )}
+
+      {/* Animations (add to globals.css or as needed) */}
+      <style jsx global>{`
+        @keyframes slideDown {
+          from { transform: translateY(-100%); opacity: 0; }
+          to { transform: translateY(0); opacity: 1; }
+        }
+        .animate-slideDown {
+          animation: slideDown 0.4s cubic-bezier(0.4,0,0.2,1);
+        }
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(10px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fadeIn {
+          animation: fadeIn 0.3s cubic-bezier(0.4,0,0.2,1);
+        }
+      `}</style>
     </nav>
-  )
-}
-
-
-
-interface ListItemProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
-  className?: string
-  title: string
-  children: React.ReactNode
-}
-
-const ListItem = ({ className, title, children, ...props }: ListItemProps) => {
-  return (
-    <li>
-      <NavigationMenuLink asChild>
-        <a
-          className={cn(
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-            className,
-          )}
-          {...props}
-        >
-          <div className="text-sm font-medium leading-none">{title}</div>
-          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">{children}</p>
-        </a>
-      </NavigationMenuLink>
-    </li>
   )
 }
