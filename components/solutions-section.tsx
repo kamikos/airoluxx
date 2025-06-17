@@ -37,20 +37,20 @@ const solutionCards = [
 
 export function SolutionsSection() {
   return (
-    <section className="py-16 lg:py-24 bg-gray-100">
-      <div className="max-w-6xl mx-auto px-4 lg:px-8">
+    <section className="py-14 bg-gray-100">
+      <div className="max-w-[1200px] mx-auto">
         <h2 className="text-3xl lg:text-4xl font-light text-gray-800 text-center mb-12 lg:mb-16">
           Wir finden für jede Situation die optimale Lösung
         </h2>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-3 gap-6 w-full">
           {solutionCards.map((card, index) => (
-            <div key={index} className="bg-white shadow-md overflow-hidden flex flex-col">
-              <div className="px-6 py-4 min-h-[100px] flex items-start">
-                <h3 className="text-2xl font-medium text-[#0EA5E9] mb-4">{card.title}</h3>
+            <div key={index} className="bg-white shadow-md overflow-hidden flex flex-col w-full">
+              <div className="px-6 min-h-[100px] flex pt-6 items-start">
+                <h3 className="text-2xl text-[#0EA5E9] mb-4">{card.title}</h3>
               </div>
 
-              <div className="relative h-56">
+              <div className="relative h-56 max-h-[170px] w-full">
                 <Image
                   src={card.image || "/placeholder.svg"}
                   alt={card.title}
@@ -68,7 +68,7 @@ export function SolutionsSection() {
                     </p>
                   ))}
 
-                  {card.moreText && <p className="text-gray-500 text-sm italic">{card.moreText}</p>}
+                  {card.moreText && <p className="text-gray-500 text-base pt-2">{card.moreText}</p>}
                 </div>
                 <div className="pt-4 flex justify-end mt-auto">
                   <Link href={card.href}>
