@@ -34,7 +34,7 @@ export function CompanySection() {
             Die airoluxx GmbH
           </h2>
 
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 mb-8">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 mb-16">
             <div className="space-y-6">
               <p className="text-gray-700 leading-relaxed">
                 <span className="font-bold">airoluxx</span> entwickelt, produziert und vertreibt energieeffiziente,

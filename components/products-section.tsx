@@ -41,8 +41,8 @@ export function ProductsSection() {
   return (
     <section id="produkte" className="">
       {/* Header */}
-      <div className="w-full bg-[#8BC34A] text-white text-center py-4">
-        <h2 className="text-xl lg:text-2xl font-medium">
+      <div className="w-full bg-[#96c32d] text-white text-center py-4">
+        <h2 className="text-xl lg:text-2xl font-light font-roboto-condensed tracking-tight">
           Schallschutz der neuesten Generation
         </h2>
       </div>
@@ -50,11 +50,14 @@ export function ProductsSection() {
       <div className="space-y-0">
         {/* Product Categories */}
         {productCategories.map((category, index) => (
-          <div key={index} className="w-full bg-gray-200">
-            <div className="max-w-6xl mx-auto px-4 lg:px-8 py-12">
+          <div key={index} className="w-full bg-[#e2e2e2]">
+            <div className="max-w-[1200px] mx-auto px-4 lg:px-8 py-12">
               <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
                 {/* Product Image */}
                 <div className="order-2 lg:order-1">
+                <h3 className="text-[#0EA5E9] text-2xl lg:text-3xl font-light mb-24">
+                  {category.title}
+                </h3>
                   <Image
                     src={category.image || "/placeholder.svg"}
                     alt={category.title}
@@ -64,29 +67,25 @@ export function ProductsSection() {
                   />
 
                   {/* Product Variants */}
-                  <div className="mt-6">
-                    <div className="flex flex-wrap gap-2 justify-center">
+                  <div className="mt-32 w-full">
+                    <div className="flex flex-wrap gap-2 justify-start w-full">
                       {category.variants.map((variant, vIndex) => (
                         <button
                           key={vIndex}
-                          className="bg-gray-400 text-white px-4 py-2 text-sm hover:bg-white hover:text-blue-400 transition-colors"
+                          className="bg-gray-400 text-white px-4 py-2 text-sm hover:bg-white hover:text-blue-400 transition-colors w-1/5"
                         >
                           {variant}
                         </button>
                       ))}
                     </div>
-                    <p className="text-center text-sm text-gray-600 mt-2">
+                    <p className="text-left text-sm text-gray-600 mt-2 w-full">
                       WÄHLEN SIE IHRE MONTAGEVARIANTE
                     </p>
                   </div>
                 </div>
 
                 {/* Product Info */}
-                <div className="order-1 lg:order-2 relative">
-                  <h3 className="text-[#0EA5E9] text-2xl lg:text-3xl font-bold mb-6">
-                    {category.title}
-                  </h3>
-
+                <div className="order-1 lg:order-2 relative mx-6">
                   {/* Specs */}
                   <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
                     {category.specs.map((spec, specIndex) => (
@@ -96,17 +95,19 @@ export function ProductsSection() {
                       >
                         <spec.icon size={24} className="mx-auto mb-2" />
                         <div className="text-sm font-semibold">{spec.text}</div>
-                        <div className="text-xs break-words">{spec.subtext}</div>
+                        <div className="text-xs break-words">
+                          {spec.subtext}
+                        </div>
                       </div>
                     ))}
                   </div>
 
                   {/* Description */}
-                  <div className="space-y-4 pb-12 bg-white p-6 shadow-md">
+                  <div className="space-y-4 pb-12 bg-white p-6 px-10 shadow-md">
                     {category.description.map((paragraph, pIndex) => (
                       <p
                         key={pIndex}
-                        className="text-gray-700 text-sm leading-relaxed"
+                        className="text-gray-700 text-base leading-relaxed"
                       >
                         {paragraph}
                       </p>
@@ -124,30 +125,30 @@ export function ProductsSection() {
         ))}
 
         {/* Third Product Section Banner */}
-        <div className="w-full bg-gray-500 text-white text-center py-4">
+        <div className="w-full bg-[#a2aeb7] text-white text-center py-4">
           <h3 className="text-xl lg:text-2xl font-medium">
             Für den Zwischenwand- und Aussenwandeinbau
           </h3>
         </div>
 
         {/* Third Product Section Content */}
-        <div className="w-full bg-gray-200">
-          <div className="max-w-6xl mx-auto px-4 lg:px-8 py-12">
-            <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-              <div className=" relative">
+        <div className="w-full bg-[#e2e2e2]">
+          <div className="max-w-6xl mx-auto px-4 lg:px-8">
+            <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+              <div className="mx-6 relative">
                 {/* Specs */}
-                <div className="grid grid-cols-3 gap-4 mb-6">
-                  <div className="bg-gray-400 text-white p-3 text-center">
+                <div className="grid grid-cols-4 gap-4 mb-6 mt-12">
+                  <div className="bg-[#a2aeb7] text-white p-3 text-center">
                     <Volume2 size={24} className="mx-auto mb-2" />
                     <div className="text-sm font-semibold">bis zu 67 dB</div>
                     <div className="text-xs">Schalldämmung</div>
                   </div>
-                  <div className="bg-gray-400 text-white p-3 text-center">
+                  <div className="bg-[#a2aeb7] text-white p-3 text-center">
                     <Wind size={24} className="mx-auto mb-2" />
                     <div className="text-sm font-semibold">bis 61 m³/h</div>
                     <div className="text-xs">Luftleistung</div>
                   </div>
-                  <div className="bg-gray-400 text-white p-3 text-center">
+                  <div className="bg-[#a2aeb7] text-white p-3 text-center">
                     <Ruler size={24} className="mx-auto mb-2" />
                     <div className="text-sm font-semibold">ab 150 mm</div>
                     <div className="text-xs">Wandstärke</div>
@@ -155,7 +156,7 @@ export function ProductsSection() {
                 </div>
 
                 <div className="space-y-4 lg:pb-6 pb-12 bg-white px-8 py-4 shadow-md">
-                  <p className="text-gray-700 text-sm leading-relaxed">
+                  <p className="text-gray-700 text-lg leading-relaxed">
                     Die hochschallgedämmten airoluxx AirFlat ZWD
                     Nachströmelemente sind sowohl für den Einsatz in der
                     Zwischenwand als auch in der Aussenwand konzipiert. Durch
