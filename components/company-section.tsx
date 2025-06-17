@@ -26,18 +26,18 @@ const features = [
 
 export function CompanySection() {
   return (
-    <section className="py-16 lg:py-24 bg-gray-50">
-      <div className="max-w-6xl mx-auto px-4 lg:px-8">
+    <section className="py-16 lg:py-20 bg-gray-50">
+      <div className="max-w-[1200px] mx-auto px-4 lg:px-8">
         {/* Company Info */}
         <div className="mb-16">
-          <h2 className="text-[#0EA5E9] text-3xl lg:text-4xl font-bold mb-12">
+          <h2 className="text-[#0EA5E9] text-3xl lg:text-4xl font-light font-roboto-condensed tracking-tight">
             Die airoluxx GmbH
           </h2>
 
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 mb-8">
             <div className="space-y-6">
               <p className="text-gray-700 leading-relaxed">
-                airoluxx entwickelt, produziert und vertreibt energieeffiziente,
+                <span className="font-bold">airoluxx</span> entwickelt, produziert und vertreibt energieeffiziente,
                 hochschallgedämmte und für höchste architektonische Ansprüche
                 konzipierte Lüftungssysteme für den Einsatz von der
                 Einzimmerwohnung bis hin zu Hochhäusern und Hotelbauten. Unser
@@ -94,10 +94,10 @@ export function CompanySection() {
               <div className="flex justify-center mb-4">
                 <feature.icon size={48} className="text-[#0EA5E9]" />
               </div>
-              <h3 className="text-gray-600 font-semibold text-sm mb-1">
+              <h3 className="font-bold text-base mb-1 font-roboto-condensed tracking-tight text-[#777777]">
                 {feature.title}
               </h3>
-              <p className="text-gray-600 font-semibold text-sm">
+              <p className="font-bold text-base font-roboto-condensed tracking-tight text-[#777777]">
                 {feature.subtitle}
               </p>
             </div>

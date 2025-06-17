@@ -126,6 +126,9 @@
     font-family: 'Roboto', sans-serif;
   }
 
+  .font-roboto-condensed {
+    font-family: 'Roboto Condensed', sans-serif;
+  }
   .hover-scale {
     @apply transition-transform duration-200 hover:scale-[1.02];
   }

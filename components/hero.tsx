@@ -3,19 +3,20 @@ import { Phone, Mail, MapPin } from "lucide-react";
 
 export function Hero() {
   return (
-    <section className="w-full relative min-h-[700px] lg:min-h-[800px] flex items-center pt-20 lg:pt-24 shadow-2xl">
+    <section className="w-full relative min-h-[600px] lg:min-h-[700px] flex items-center shadow-2xl">
       {/* Background Image */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-[20s] hover:scale-110"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/images/building.jpeg')`,
+          backgroundImage: `url('/images/building.jpeg')`,
         }}
       />
 
       {/* Content */}
       <div className="relative z-10 w-full px-4 lg:px-8 container mx-auto">
         <div className="max-w-2xl">
-          <h1 className="text-white text-3xl md:text-4xl lg:text-6xl font-bold leading-tight mb-6 opacity-0 animate-[fadeInUp_0.5s_ease-out_0.2s_forwards]">
+          {/* banner h1 roboto condensed light */}
+          <h1 className="text-shadow-lg/30 font-roboto-condensed font-light text-white text-2xl md:text-4xl lg:text-6xl leading-tight mb-6 opacity-0 animate-[fadeInUp_0.5s_ease-out_0.2s_forwards]">
             DEZENTRALE
             <br />
             WOHNRAUMLÜFTUNGEN
